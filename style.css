@@ -1,0 +1,42 @@
+/*
+===============================
+Change everything to border-box model
+===============================
+*/
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*
+===============================
+Etch-a-sketch container
+===============================
+*/
+
+#container {
+	width: 960px;
+	height: 960px;
+	//border: 6px solid black;
+	margin: 20px auto;
+}
+
+/*
+===============================
+Grid
+===============================
+*/
+
+
+.red {
+	background-color: red;
+	width: 60px;
+	height: 60px;
+	border: 1px solid blue;
+	display: inline-block;
+	margin-bottom: -4px;
+}
