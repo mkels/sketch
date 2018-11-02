@@ -32,8 +32,8 @@ Grid
 */
 
 
-.red {
-	background-color: red;
-	border: 1px solid blue;
+.square {
+	background-color: white;
+	border: 1px solid black;
 	display: inline-block;
 }
