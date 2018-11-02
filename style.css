@@ -25,6 +25,15 @@ Etch-a-sketch container
 	font-size: 0px;
 }
 
+button {
+	font-weight: bold;
+	font-size: 24px;
+	font-family: Lucida console;
+	border-radius: 6px;
+	border: solid 1px black;
+	padding: 5px 10px;
+}
+
 /*
 ===============================
 Grid
