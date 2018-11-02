@@ -21,6 +21,9 @@
 					block.classList.add('square');
 					block.style.width = size + "px";
 					block.style.height = size + "px";
+					block.addEventListener('mouseover', () => {
+						block.classList.add('color');
+					});
 					container.appendChild(block);
 				}
 			}
