@@ -5,20 +5,35 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<button>New Sketchpad</button>
+	<button id="bw">New Blank Sketchpad</button>
+	<button id="randomColor">Random Color</button>
 	<div id="container"></div>
 	<script>
-		//Choose a random color
-		function randomColor() {
-			var r, g, b;
-			r = Math.floor(Math.random() * Math.floor(256));
-			g = Math.floor(Math.random() * Math.floor(256));
-			b = Math.floor(Math.random() * Math.floor(256));
+		//Create the black and white grid.
+		const container = document.querySelector('#container');
+		function bwGrid(n) {
+			n = prompt("Enter a number", n);
+
+			//Calculate grid box size
+			const size = 960 / n;
+
+			for( j = 0; j < n; j++ ){
+				for( i = 0; i < n; i++ ) {
+					const block = document.createElement('div');
+					block.classList.add('square');
+					block.style.width = size + "px";
+					block.style.height = size + "px";
+					block.style.backgroundColor = "white";
+					block.addEventListener('mouseenter', () => {
+						block.style.backgroundColor = "black";
+					});
+					container.appendChild(block);
+				}
+			}
 		}
 
-		//Create the grid.
-		const container = document.querySelector('#container');
-		function grid(n) {
+		//Create the random color grid.
+		function randomGrid(n) {
 			n = prompt("Enter a number", n);
 
 			//Calculate grid box size
@@ -43,8 +58,22 @@
 			}
 		}
 
-		//Reset button
-		btn = document.querySelector('button');	
+		//New black/white sketchpad button
+		btns = document.querySelector('#bw');	
+		btns.addEventListener('click', () => {
+			const container = document.querySelector('#container');
+			var square = container.firstChild;
+
+			while( square ) {
+				container.removeChild(square);
+				square = container.firstChild;
+			}
+
+			bwGrid();
+		})
+
+		//Random color button
+		btn = document.querySelector('#randomColor');	
 		btn.addEventListener('click', () => {
 			const container = document.querySelector('#container');
 			var square = container.firstChild;
@@ -54,7 +83,7 @@
 				square = container.firstChild;
 			}
 
-			grid();
+			randomGrid();
 		})
 	</script>
 </body>
