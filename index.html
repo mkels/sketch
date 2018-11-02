@@ -8,6 +8,14 @@
 	<button>New Sketchpad</button>
 	<div id="container"></div>
 	<script>
+		//Choose a random color
+		function randomColor() {
+			var r, g, b;
+			r = Math.floor(Math.random() * Math.floor(256));
+			g = Math.floor(Math.random() * Math.floor(256));
+			b = Math.floor(Math.random() * Math.floor(256));
+		}
+
 		//Create the grid.
 		const container = document.querySelector('#container');
 		function grid(n) {
@@ -23,7 +31,12 @@
 					block.style.width = size + "px";
 					block.style.height = size + "px";
 					block.addEventListener('mouseenter', () => {
-						block.classList.add('color');
+						var r, g, b;
+						r = Math.floor(Math.random() * Math.floor(256));
+						g = Math.floor(Math.random() * Math.floor(256));
+						b = Math.floor(Math.random() * Math.floor(256));
+
+						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
 					});
 					container.appendChild(block);
 				}
