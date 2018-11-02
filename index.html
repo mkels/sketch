@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<button>New Sketchpad</button>
 	<div id="container"></div>
 	<script>
 		//Create the grid.
@@ -21,13 +22,27 @@
 					block.classList.add('square');
 					block.style.width = size + "px";
 					block.style.height = size + "px";
-					block.addEventListener('mouseover', () => {
+					block.addEventListener('mouseenter', () => {
 						block.classList.add('color');
 					});
 					container.appendChild(block);
 				}
 			}
 		}
+
+		//Reset button
+		btn = document.querySelector('button');	
+		btn.addEventListener('click', () => {
+			const container = document.querySelector('#container');
+			var square = container.firstChild;
+
+			while( square ) {
+				container.removeChild(square);
+				square = container.firstChild;
+			}
+
+			grid();
+		})
 
 		grid();
 	</script>
