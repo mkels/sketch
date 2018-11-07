@@ -7,8 +7,11 @@
 <body>
 	<button id="bw">New Blank Sketchpad</button>
 	<button id="randomColor">Random Color</button>
+	<button id="fade">Fade</button>
 	<div id="container"></div>
 	<script>
+		var r, g, b;
+
 		//Create the black and white grid.
 		const container = document.querySelector('#container');
 		function bwGrid(n) {
@@ -58,6 +61,36 @@
 			}
 		}
 
+		function fade(n) {
+			n = prompt("Enter a number", n);
+
+			//Calculate grid box size
+			const size = 960 / n;
+
+			for( j = 0; j < n; j++ ) {
+				for( i = 0; i < n; i++ ) {
+					const block = document.createElement('div');
+					block.classList.add('square');
+					block.style.width = size + "px";
+					block.style.height = size + "px";
+					block.addEventListener('mouseenter', () => {
+						//var r, g, b;
+						console.log(r);
+
+						if (r == undefined) {
+							r = Math.floor(Math.random() * Math.floor(256));
+							g = Math.floor(Math.random() * Math.floor(256));
+							b = Math.floor(Math.random() * Math.floor(256));
+						}
+
+						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
+
+					});
+					container.appendChild(block);
+				}
+			}
+		}
+
 		//New black/white sketchpad button
 		btns = document.querySelector('#bw');	
 		btns.addEventListener('click', () => {
@@ -84,6 +117,20 @@
 			}
 
 			randomGrid();
+		})
+
+		//Fade color button
+		btn = document.querySelector('#fade');	
+		btn.addEventListener('click', () => {
+			const container = document.querySelector('#container');
+			var square = container.firstChild;
+
+			while( square ) {
+				container.removeChild(square);
+				square = container.firstChild;
+			}
+
+			fade();
 		})
 	</script>
 </body>
