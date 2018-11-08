@@ -10,7 +10,13 @@
 	<button id="fade">Fade</button>
 	<div id="container"></div>
 	<script>
+		var count = 0;
 		var r, g, b;
+		function getColor() {
+			r = Math.floor(Math.random() * Math.floor(256));
+			g = Math.floor(Math.random() * Math.floor(256));
+			b = Math.floor(Math.random() * Math.floor(256));
+		}
 
 		//Create the black and white grid.
 		const container = document.querySelector('#container');
@@ -49,11 +55,7 @@
 					block.style.width = size + "px";
 					block.style.height = size + "px";
 					block.addEventListener('mouseenter', () => {
-						var r, g, b;
-						r = Math.floor(Math.random() * Math.floor(256));
-						g = Math.floor(Math.random() * Math.floor(256));
-						b = Math.floor(Math.random() * Math.floor(256));
-
+						getColor();
 						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
 					});
 					container.appendChild(block);
@@ -74,17 +76,11 @@
 					block.style.width = size + "px";
 					block.style.height = size + "px";
 					block.addEventListener('mouseenter', () => {
-						//var r, g, b;
-						console.log(r);
-
-						if (r == undefined) {
-							r = Math.floor(Math.random() * Math.floor(256));
-							g = Math.floor(Math.random() * Math.floor(256));
-							b = Math.floor(Math.random() * Math.floor(256));
+						getColor();
+						while (count < 1) {
+							block.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+							count++;
 						}
-
-						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
-
 					});
 					container.appendChild(block);
 				}
