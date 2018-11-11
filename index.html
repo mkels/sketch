@@ -12,7 +12,7 @@
 	<script>
 		var r = 255;
 		var g = 255;
-		var b = 255;;
+		var b = 255;
 		function getColor() {
 			r = Math.floor(Math.random() * Math.floor(256));
 			g = Math.floor(Math.random() * Math.floor(256));
@@ -83,7 +83,14 @@
 					block.style.width = size + "px";
 					block.style.height = size + "px";
 					block.addEventListener('mouseenter', () => {
-						fadeColor();
+						var rgb = block.style.backgroundColor;
+						rgb = rgb.substr(4, rgb.length - 2);
+						rgb = rgb.split(", ");
+						console.log(rgb);
+						rgb[0] = parseInt(rgb[0]);
+						rgb[1] = parseInt(rgb[1]);
+						rgb[2] = parseInt(rgb[2]);
+						console.log(rgb);
 						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
 					});
 					container.appendChild(block);
