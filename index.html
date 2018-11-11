@@ -82,15 +82,21 @@
 					block.classList.add('square');
 					block.style.width = size + "px";
 					block.style.height = size + "px";
+					block.style.backgroundColor = "rgb(255, 255, 255)";
 					block.addEventListener('mouseenter', () => {
+						//Get rgb values and place in an array
 						var rgb = block.style.backgroundColor;
 						rgb = rgb.substr(4, rgb.length - 2);
 						rgb = rgb.split(", ");
-						console.log(rgb);
+
+						//Change rgb values to integers
 						rgb[0] = parseInt(rgb[0]);
 						rgb[1] = parseInt(rgb[1]);
 						rgb[2] = parseInt(rgb[2]);
 						console.log(rgb);
+						r = rgb[0] - 25;
+						g = rgb[1] - 25;
+						b = rgb[2] - 25;
 						block.style.backgroundColor = "rgb(" + r +", " + b + ", " + g + ")";
 					});
 					container.appendChild(block);
